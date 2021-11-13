@@ -1,26 +1,24 @@
-//包含重要库, Important libraries.
+//Important libraries
 #include <stdio.h>
 #include <stdlib.h>
 
 int main()
 {
-	FILE *asciip;
+    FILE *asciip;
     int width,i;
-    asciip=fopen("ascii.properties","r"); //查找文件, Search file.
+    asciip=fopen("ascii.properties","r"); //Search file
     
-    //显示介绍, View more information
-    printf("材质包内容 ascii.properties 生成工具\n");
-	printf("by: The With Commands\n");
-	printf("该工具写于2020年新冠病毒哀悼活动期间，即2020年4月4日。\n\n") ;
-	printf("愿逝者安息，愿生者奋发，愿祖国昌盛。\n\n");
+    //View more information
+    printf("Ascii Properties Creator\n");
+    printf("by: The With Commands\n\n");
 	
-	//如果文件不存在就创建，反之提示, If the file does not exist, it will be created. If not, remind.
-	if(asciip==NULL)asciip=fopen("ascii.properties","w");
+    //If the file does not exist, it will be created. If not, remind.
+    if(asciip==NULL)asciip=fopen("ascii.properties","w");
     else while(1)
     {
     	fclose(asciip);
-    	printf("存在现有文件，请先将其移动到其他位置，");
-    	printf("然后按任意键。\n");
+    	printf("here is an existing file, please move it to another location, ");
+    	printf("and then press any key.\n");
     	system("pause>nul");
     	asciip=fopen("ascii.properties","r");
     	if(asciip==NULL)
@@ -30,14 +28,14 @@ int main()
 		}
 	}
 	
-	//运行, Run.
+    //Run
     for(i=0x21;i<0xb0;i++)
     {
-    	printf("字符十六进制代码定向目前是 %xh，请输入宽度。\n",i);
+    	printf("Character hex code orientation is currently %xh, enter the width.\n",i);
     	scanf("%d",&width);
     	if(width>7)while(1)
     	{
-    		printf("据 Optifine 要求，宽度不能超过 7，请重新输入。\n");
+    		printf("For Optifine requirements below 1.13, the width cannot exceed 7, please re-enter.\n");
     	 	scanf("%d",&width);
     	 	if(width>7);else break;
 		}
@@ -45,17 +43,17 @@ int main()
 	}
 	for(i=0xe0;i<0xff;i++)
 	{
-    	printf("字符十六进制代码定向目前是 %xh，请输入宽度。\n",i);
+    	printf("Character hex code orientation is currently %xh, enter the width.\n",i);
     	scanf("%d",&width);
     	if(width>7)while(1)
     	{
-    		printf("据 Optifine 要求，宽度不能超过 7，请重新输入。\n");
+    		printf("For Optifine requirements below 1.13, the width cannot exceed 7, please re-enter.\n");
     	 	scanf("%d",&width);
     	 	if(width>7);else break;
 		}
 		fprintf(asciip,"width.%d=%d\n",i,width+1);
 	}
-	fclose(asciip); //完成操作，关闭文件, Done.
-	printf("已经完成生成一个 ascii.properties 文件。按任意键退出。");
+	fclose(asciip); //Done
+	printf("Finished generating an ascii.properties file. Press any key to exit.");
 	system("pause>nul");
 }
